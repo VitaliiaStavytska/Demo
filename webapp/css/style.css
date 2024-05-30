@@ -1,0 +1,40 @@
+.spacer {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.divider {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+.loginBG {
+  background: linear-gradient(135deg, #ffffff 25%, transparent 25%) -29px 0/ 58px 58px,
+    linear-gradient(225deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%) -29px 0/ 58px 58px,
+    linear-gradient(315deg, #ffffff 25%, transparent 25%) 0 0/ 58px 58px,
+    linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, #f5f6f7 25%) 0 0/ 58px 58px;
+  background-color: #f5f6f7;
+}
+.loginContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginFooter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.customObjectHeaderTitle .sapMObjectHeaderTitle {
+  color: blue;
+}

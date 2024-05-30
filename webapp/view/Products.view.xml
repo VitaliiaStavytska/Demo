@@ -1,0 +1,109 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:chart="sap.suite.ui.commons"
+    controllerName="keytech.demo.controller.Products"
+>
+    <Page
+        id="products"
+        title="{i18n>productsTitle}"
+        titleAlignment="Center"
+        showNavButton="true"
+        navButtonPress="onBack"
+        navButtonTooltip=""
+        class="sapUiResponsiveContentPadding"
+    >
+        <Toolbar
+            design="Info"
+            height="80px"
+        >
+            <Title
+                titleStyle="H3"
+                text="{i18n>productListTitle}"
+            />
+            <ToolbarSpacer />
+            <SearchField
+                id="search"
+                width="50%"
+                showSearchButton="false"
+                placeholder="Search by Product..."
+            />
+           
+            <Button
+                text="Cerca"
+                icon="sap-icon://search"
+                press="onFilter"
+            />
+            <Button
+                text="Reset"
+                icon="sap-icon://reset"
+                press="onReset"
+            />
+        </Toolbar>
+
+        <Table
+            id="ProductList"
+            width="100%"
+            items="{products>/}"
+            growing="true"
+            alternateRowColors="true"
+        >
+            <columns >
+
+                <Column>
+                    <Text text="{i18n>columnName}" />
+                </Column>
+                <Column
+                    minScreenWidth="Small"
+                    demandPopin="true"
+                >
+                    <Text text="{i18n>columnProductID}" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="false"
+                >
+                    <Text text="{i18n>columnCategoryID}" />
+                </Column>
+                <!-- <Column hAlign="End"> 
+                    <Text text="{i18n>columnUnitPrice}" />
+                 </Column> -->
+                <Column>
+                    <Text text="{i18n>columnQuantityPerUnit}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>columnUnitsOnOrder}" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem
+                    type="Navigation"
+                    press="onPress"
+                >
+                    <cells>
+                       
+                        <ObjectIdentifier title="{products>ProductName}" />
+
+                        <Text text="{products>ProductID}" />
+
+                        <Text text="{products>CategoryID}" />
+<!--
+                        <ObjectNumber
+                             number="{ 
+                        parts: ['invoices>ExtendedPrice', 'view>/currency'],
+                        type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false}}"
+                            unit="{view>/currency}"
+                            state="{= ${invoices>ExtendedPrice} > 50 ? 'Error' : 'Success' }"
+                         /> -->
+
+                        <Text text="{products>QuantityPerUnit}" />
+
+                        <Text text="{products>UnitsOnOrder}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>

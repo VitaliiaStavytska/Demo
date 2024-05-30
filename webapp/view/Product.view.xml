@@ -1,0 +1,256 @@
+<mvc:View
+    controllerName="keytech.demo.controller.Product"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:unified="sap.ui.unified"
+    xmlns:uxap="sap.uxap"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.f"
+    xmlns:vk="sap.ui.vk"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    height="100%"
+>
+    <Page
+        id="product"
+        title="Product N.{product>/ProductID} - Details"
+        titleAlignment="Center"
+        showNavButton="true"
+        navButtonPress="onBack"
+        navButtonTooltip=""
+        enableScrolling="true"
+ class="sapUiResponsiveContentPadding loginBG">
+        <ObjectHeader
+            title="{product>/ProductName} Product"
+            backgroundDesign="Transparent"
+            titleActive="true"
+            titleTextDirection="Inherit"
+            titlePress="onOpenProductDetails"
+            icon="sap-icon://product"
+            class="customObjectHeader"
+        />
+        <ToolbarSpacer />
+        <HBox
+            alignContent="Center"
+            alignItems="Center"
+            backgroundDesign="Transparent"
+        >
+            <TileContent
+                unit="EUR"
+                footer="Unit Price"
+            >
+                <content>
+                    <NumericContent
+                        value="{product>/UnitPrice}"
+                        icon="sap-icon://money-bills"
+                    />
+                </content>
+            </TileContent>
+            <TileContent
+                unit="Pc"
+                footer="Units in Stock"
+            >
+                <content>
+                    <NumericContent
+                        value="{product>/UnitsInStock}"
+                        valueColor="Critical"
+                        indicator="Down"
+                        icon="sap-icon://horizontal-bar-chart"
+                    />
+                </content>
+            </TileContent>
+            <TileContent
+                unit="Level"
+                footer="Reorder Level"
+            >
+                <content>
+                    <NumericContent
+                        value="{product>/ReorderLevel}"
+                        valueColor="Neutral"
+                        indicator="Up"
+                        icon="sap-icon://vertical-bar-chart"
+                    />
+                </content>
+            </TileContent>
+            <TileContent
+                unit="Pc"
+                footer="Units on Order"
+            >
+                <content>
+                    <NumericContent
+                        value="{product>/UnitsOnOrder}"
+                        icon="sap-icon://bubble-chart"
+                    />
+                </content>
+            </TileContent>
+            <TileContent
+                unit="Pc"
+                footer="Quantity per Unit"
+            >
+                <content>
+                    <NumericContent
+                        value="{product>/QuantityPerUnit}"
+                        icon="sap-icon://pie-chart"
+                    />
+                </content>
+            </TileContent>
+        </HBox>
+        <IconTabBar
+            id="iconTabBar"
+            headerBackgroundDesign="Transparent"
+            select="onTabSelectProduct"
+            selectedKey="{detailView>/selectedTab}"
+        >
+            <items>
+                <IconTabFilter
+                    id="iconTabFilterInfo"
+                    text="Information"
+                    icon="sap-icon://information"
+                    tooltip="{i18n>detailIconTabBarInfo}"
+                    key="info"
+                />
+                <IconTabFilter
+                    id="iconTabFilterCategory"
+                    text="Category"
+                    icon="sap-icon://calendar"
+                    tooltip="{i18n>detailIconTabBarShipping}"
+                    key="category"
+                />
+                <IconTabFilter
+                    id="iconTabFilterSupplier"
+                    text="Supplier"
+                    icon="sap-icon://supplier"
+                    tooltip="{i18n>detailIconTabBarCustomer}"
+                    key="supplier"
+                />
+            </items>
+        </IconTabBar>
+        <f:Card
+            class="sapUiMediumMargin"
+            width="300px"
+            id="CategoryCard"
+        >
+            <f:header>
+                <card:Header title="Category" />
+            </f:header>
+            <f:content>
+                <List class="sapUiSmallMarginBottom">
+                    <CustomListItem>
+                        <VBox justifyContent="SpaceBetween">
+                            <VBox
+                                class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"
+                            >
+                                <Label text="Category Type" />
+                                <HBox>
+                                    <core:Icon src="sap-icon://business-card" />
+                                    <Text
+                                        text="{product>/Category/CategoryName}"
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                </HBox>
+                            </VBox>
+                            <VBox
+                                class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"
+                            >
+                                <Label text="Category ID" />
+                                <HBox>
+                                    <core:Icon src="sap-icon://folder" />
+                                    <Text
+                                        text="{product>/Category/CategoryID}"
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                    </CustomListItem>
+                </List>
+            </f:content>
+        </f:Card>
+        <f:Card
+            class="sapUiMediumMargin"
+            width="300px"
+            visible="false"
+            id="InfoCard"
+        >
+            <f:header>
+                <card:Header title="Details" />
+            </f:header>
+            <f:content>
+                <List class="sapUiSmallMarginBottom">
+                    <CustomListItem>
+                        <VBox justifyContent="SpaceBetween">
+                            <VBox
+                                class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"
+                            >
+                                <Label text="Description" />
+                                <HBox>
+                                    <core:Icon src="sap-icon://hint" />
+                                    <Text
+                                        text="{product>/Category/Description}"
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                    </CustomListItem>
+                </List>
+            </f:content>
+        </f:Card>
+        <f:Card
+            class="sapUiMediumMargin"
+            width="300px"
+            visible="false"
+            id="SupplierCard"
+        >
+            <f:header>
+                <card:Header title="Supplier" />
+            </f:header>
+            <f:content>
+                <List class="sapUiSmallMarginBottom">
+                    <CustomListItem>
+                        <VBox justifyContent="SpaceBetween">
+                            <VBox
+                                class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"
+                            >
+                                <Label text="Supplier Name" />
+                                <HBox>
+                                    <core:Icon src="sap-icon://business-card" />
+                                    <Text
+                                        text="{product>/Supplier/SupplierName} {product>/Supplier/ContactName} ({product>/Supplier/ContactTitle})"
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                </HBox>
+                            </VBox>
+                            <VBox
+                                class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"
+                            >
+                                <Label text="Phone number" />
+                                <HBox>
+                                    <core:Icon src="sap-icon://call" />
+                                    <Text
+                                        text="{product>/Supplier/Phone}"
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                </HBox>
+                            </VBox>
+                            <VBox
+                                class="sapUiSmallMarginBegin sapUiMediumMarginEnd sapUiSmallMarginTopBottom "
+                            >
+                                <Label text="Supplier Address" />
+                                <HBox>
+                                    <core:Icon src="sap-icon://building" />
+                                    <Text
+                                        text="{product>/Supplier/Address}, {product>/Supplier/City}, {product>/Supplier/Country} ({product>/Supplier/PostalCode})"
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                    </CustomListItem>
+                </List>
+            </f:content>
+        </f:Card>
+    </Page>
+</mvc:View>

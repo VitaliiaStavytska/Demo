@@ -1,0 +1,113 @@
+<mvc:View
+    controllerName="keytech.demo.controller.App"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:tnt="sap.tnt"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="false"
+>
+
+    <HBox id="loginContainer" class="loginContainer loginBG">
+        <VBox class="loginContainer">
+            <Image src="../images/logo.png" width="400px" />
+
+            <f:Card width="480px" class="sapUiSmallMarginTop">
+
+                <f:header>
+                    <card:Header title="Log In" subtitle="Enter your login infos"
+                        iconSrc="sap-icon://key" />
+                </f:header>
+
+                <f:content>
+                    <HBox width="100%" class="sapUiMediumMargin">
+                        <VBox width="100%">
+
+                            <Label text="Email" />
+                            <Input id="email" type="Email" />
+
+                            <HBox class="spacer" />
+
+                            <Label text="Password" />
+                            <Input id="password" type="Password" />
+
+                            <HBox class="loginFooter">
+                                <Button text="Log In" type="Emphasized" press="onLogin" />
+                            </HBox>
+                        </VBox>
+                    </HBox>
+                </f:content>
+
+            </f:Card>
+        </VBox>
+    </HBox>
+
+    <tnt:ToolPage id="appContainer" visible="false">
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Button icon="sap-icon://menu2" press="onNavButton">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                </Button>
+                <ToolbarSpacer width="20px" />
+
+                <tnt:ToolHeaderUtilitySeparator />
+                <ToolbarSpacer>
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px" />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Button id="username" type="Transparent" press=".handleUserNamePress"
+                    ariaHasPopup="Menu">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                </Button>
+            </tnt:ToolHeader>
+        </tnt:header>
+
+        <tnt:sideContent>
+            <tnt:SideNavigation expanded="true">
+                <tnt:NavigationList id="navigationList">
+                    <tnt:NavigationListItem key="homeButton" text="Home" icon="sap-icon://home"
+                        href="index.html" />
+                    <tnt:NavigationListItem key="invoicesButton" text="Invoices"
+                        icon="sap-icon://sales-order-item"
+                        href="#/invoices"
+                    />
+                    <tnt:NavigationListItem key="productsButton" text="Products"
+                        icon="sap-icon://product"
+                        href="#/products"
+                    />
+                    <tnt:NavigationListItem key="customersButton" text="Customers"
+                        icon="sap-icon://account"
+                        href="#/customers"
+                    />
+                </tnt:NavigationList>
+
+                <tnt:fixedItem>
+                    <tnt:NavigationList>
+                        <tnt:NavigationListItem text="Bar Chart" icon="sap-icon://bar-chart" />
+                        <tnt:NavigationListItem href="https://ui5.sap.com/" target="_blank"
+                            text="API &amp; Demos"
+                            icon="sap-icon://chain-link"
+                        />
+                        <tnt:NavigationListItem text="Logout" icon="sap-icon://log"
+                            select="onLogout"
+                            href="index.html" />
+                    </tnt:NavigationList>
+                </tnt:fixedItem>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+
+        <tnt:mainContents>
+            <NavContainer id="pageContainer" initialPage="page2">
+                <pages>
+                    <App id="app" />
+                </pages>
+            </NavContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

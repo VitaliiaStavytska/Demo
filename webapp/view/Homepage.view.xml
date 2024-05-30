@@ -1,0 +1,71 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:chart="sap.suite.ui.commons"
+    controllerName="keytech.demo.controller.Homepage"
+    class="loginBG" 
+>
+    <ScrollContainer
+        id="homepage"
+        horizontal="false"
+        vertical="true"
+        height="100%"
+        class="sapUiResponsiveContentPadding"
+        
+    >
+        <HBox alignItems="Center" justifyContent="Center" class="sapUiTinyMargin"> <!-- Disporre le tile orizzontalmente -->
+            <GenericTile
+                id="invoicesTile"
+                header="{i18n>invoicesTileHeader}"
+                subheader="{i18n>invoicesTileSubheader}"
+                frameType="Auto"
+                class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                press="onPress"
+            >
+                <TileContent>
+                    <NumericContent
+                        value="{count>/invoices}"
+                        icon="sap-icon://sales-order-item"
+                        withMargin="true"
+                    />
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile
+                id="productsTile"
+                header="{i18n>productsTileHeader}"
+                subheader="{i18n>productsTileSubheader}"
+                frameType="Auto"
+                class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                press="onPress"
+            >
+                <TileContent>
+                    <NumericContent
+                        value="{count>/products}"
+                        icon="sap-icon://product"
+                        withMargin="true"
+                    />
+                </TileContent>
+            </GenericTile>
+             <GenericTile
+        id="customersTile"
+        header="{i18n>customersTileHeader}"
+        subheader="{i18n>customersTileSubheader}"
+        frameType="Auto"
+        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+        press="onPress"
+       
+    >
+        <TileContent>
+            <NumericContent
+                value="{count>/customers}"
+                icon="sap-icon://account"
+                withMargin="true"
+            />
+        </TileContent>
+    </GenericTile>
+        </HBox>
+    </ScrollContainer>
+</mvc:View>
